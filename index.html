@@ -3,36 +3,36 @@
 
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Gerador de Combinações personalizável para jogos, sorteios e estatísticas, com filtros e exportação de dados em Excel.">
-<meta name="keywords" content="gerador de combinações, loteria, estatísticas, combinações numéricas, filtros, sorteio, exportar excel, análise de números, jogos de azar, planilha de combinações">
-<meta name="author" content="Seu Nome ou Empresa">
-<meta name="robots" content="index, follow">
-<meta name="distribution" content="global">
-<meta name="googlebot" content="index, follow">
-
-<!-- Open Graph -->
-<meta property="og:site_name" content="Gerador de Combinações">
-<meta property="og:title" content="Gerador de Combinações Personalizado">
-<meta property="og:description" content="Crie combinações numéricas personalizadas com filtros inteligentes, visualize estatísticas e exporte os dados em Excel.">
-<meta property="og:url" content="https://seusite.com/gerador-combinacoes">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="600">
-<meta property="og:image:height" content="315">
-<meta property="og:locale" content="pt_BR">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Gerador de Combinações Personalizado">
-<meta name="twitter:description" content="Monte combinações com filtros inteligentes e exporte para Excel. Ideal para jogos, loterias e estatísticas.">
-<meta name="twitter:image" content="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png">
-
-<!-- Web App -->
-<meta name="application-name" content="Gerador de Combinações">
-<meta name="theme-color" content="#930089">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de Combinações personalizável para jogos, sorteios e estatísticas, com filtros e exportação de dados em Excel.">
+    <meta name="keywords" content="gerador de combinações, loteria, estatísticas, combinações numéricas, filtros, sorteio, exportar excel, análise de números, jogos de azar, planilha de combinações">
+    <meta name="author" content="Seu Nome ou Empresa">
+    <meta name="robots" content="index, follow">
+    <meta name="distribution" content="global">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Gerador de Combinações">
+    <meta property="og:title" content="Gerador de Combinações Personalizado">
+    <meta property="og:description" content="Crie combinações numéricas personalizadas com filtros inteligentes, visualize estatísticas e exporte os dados em Excel.">
+    <meta property="og:url" content="https://seusite.com/gerador-combinacoes">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="315">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gerador de Combinações Personalizado">
+    <meta name="twitter:description" content="Monte combinações com filtros inteligentes e exporte para Excel. Ideal para jogos, loterias e estatísticas.">
+    <meta name="twitter:image" content="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png">
+    
+    <!-- Web App -->
+    <meta name="application-name" content="Gerador de Combinações">
+    <meta name="theme-color" content="#930089">
     <title>Gerador de Combinações</title>
     <link rel="shortcut icon" href="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
@@ -46,10 +46,46 @@
             text-align: center;
             /* centraliza o conteúdo de texto */
         }
+
+        /* --- Início do Código do Pre-loader --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #fff; /* Cor de fundo do preloader */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out; /* Efeito de fade-out */
+        }
+
+        #preloader .spinner-preloader {
+            border: 12px solid #f3f3f3; /* Cinza claro */
+            border-top: 12px solid #930089; /* Cor do tema */
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* --- Fim do Código do Pre-loader --- */
+
     </style>
 </head>
 
 <body>
+    <!-- Elemento do Pre-loader -->
+    <div id="preloader">
+        <div class="spinner-preloader"></div>
+    </div>
+
     <div class="container">
         <div class="theme-switch-wrapper">
             <label class="theme-switch" for="checkbox">
@@ -240,11 +276,12 @@
                     <input type="text" id="colunasInput" pattern="^(\d,){4}\d$" placeholder="0,0,0,0,0">
                 </div>
                 <div class="filter-item">
-                    <label for="menores10Input"> < 10:</label>
-                    <input type="number" id="menores10Input" min="0" max="6" value="" placeholder="0">
+                    <label for="menores10Input">
+                        < 10:</label>
+                            <input type="number" id="menores10Input" min="0" max="6" value="" placeholder="0">
                 </div>
                 <div class="filter-item">
-                    <label for="maiores10Input"> >  9:</label>
+                    <label for="maiores10Input"> > 9:</label>
                     <input type="number" id="maiores10Input" min="0" max="6" value="" placeholder="0">
                 </div>
             </div>
@@ -289,6 +326,21 @@
         <div id="paginationContainer" class="pagination-container"></div>
     </div>
     <script src="js/main.js"></script>
+
+    <!-- Script para esconder o Pre-loader -->
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                // Inicia o efeito de fade-out
+                preloader.style.opacity = '0';
+                // Esconde o elemento após a transição terminar
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500); // Deve ser igual à duração da transição no CSS
+            }
+        });
+    </script>
 </body>
 
 </html>
