@@ -1,0 +1,11 @@
+{
+  "name": "gerar-combinacao",
+  "version": "1.0.0",
+  "description": "Projeto para gerar combinações de números, como em loterias.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Seu Nome",
+  "license": "MIT"
+}

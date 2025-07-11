@@ -1,0 +1,801 @@
+:root {
+  --bg-color: #ffffff;
+  --bg-color2: #FFF0FE;
+  
+  --text-color: #333333;
+  --primary-color: #930089;
+  --secondary-color: #f0f0f0;
+  --border-color: #dddddd;
+  --border-solid: #000000;
+  --hover-color: #C5C5C5;
+  --table-header-bg: #f2f2f2;
+  --table-row-hover: #f5f5f5;
+}
+
+.dark-mode {
+  --bg-color: #1a1a1a;
+  --bg-color2: #1A0119;
+  --text-color: #ffffff;
+  --primary-color: #b600b0;
+  --secondary-color: #2c2c2c;
+  --border-color: #444444;
+  --border-solid: #F8F4F4;
+  --hover-color: #C5C5C5;
+  --table-header-bg: #2c2c2c;
+  --table-row-hover: #333333;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 100%;
+  padding: 0 10px;
+  border: 1px solid #b600b0;
+  background-color: var(--bg-color2);
+  
+}
+
+.table-container {
+  max-height: 600px;
+  overflow-y: auto;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.table-container table {
+  margin-right: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+  background-color: var(--bg-color);
+}
+
+th,
+td {
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--table-header-bg);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+/* Botões redesenhados para serem menores e mais organizados */
+button {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  /* Reduzido o padding */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  /* Reduzido o tamanho da fonte */
+  margin: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  border-radius: 5px;
+  max-width: 200px;
+  /* Limitando a largura máxima */
+}
+
+button:hover {
+  background-color: var(--hover-color);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.action-button {
+  background-color: #007bff;
+  font-weight: bold;
+  font-size: 13px;
+  /* Reduzido ainda mais */
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+/* Novo container para organizar os botões principais */
+.main-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.main-buttons button {
+  flex: 0 1 auto;
+  min-width: 120px;
+}
+
+.number-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.number-button {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-solid);
+  border-radius: 1px;
+  padding: 8px 5px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.number-button.selected {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin-right: 10px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.info-label {
+  font-weight: bold;
+  color: var(----text-color);
+  margin-right: 10px;
+}
+
+.info-value {
+  font-size: 16px;
+  /* Reduzido */
+  color: var(--text-color);
+}
+
+#combinationCount {
+  font-size: 16px;
+  /* Reduzido */
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-top: 10px;
+}
+
+.clear-button {
+  background-color: #f44336;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#selectedNumbersContainer {
+  flex: none;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 128, 0, 0.2);
+  /* verde com 20% de opacidade */
+  border: 2px solid green;
+  /* borda verde */
+  border-radius: 8px;
+  /* opcional: cantos arredondados */
+  margin-bottom: 20px;
+  
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Reorganização do container de botões */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.button-container input {
+  max-width: 250px;
+}
+
+.filter-container {
+  margin-bottom: 15px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  /* Reduzido */
+}
+
+.filter-item label {
+  margin-right: 8px;
+}
+
+.filter-item input {
+  width: 60px;
+}
+
+/* Dark mode toggle switch */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 24px;
+  position: relative;
+  width: 50px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 16px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 16px;
+}
+
+input:checked+.slider {
+  background-color: var(--secondary-color);
+}
+
+input:checked+.slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .number-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  
+  .number-button {
+    font-size: 16px;
+  }
+  
+  .info-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .info-item {
+    flex: 1 1 200px;
+    
+  }
+  
+  table {
+    font-size: 14px;
+  }
+  
+  /* Reorganização dos botões em telas maiores */
+  .button-container {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .main-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .number-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  th,
+  td {
+    font-size: 12px;
+  }
+  
+  .button-container input,
+  .button-container button {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .number-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+  }
+  
+  th,
+  td {
+    font-size: 11px;
+    padding: 4px;
+  }
+  
+  button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+#filteredCombinationsCount {
+  margin-bottom: 15px;
+  font-size: 16px;
+  /* Reduzido */
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.no-combinations-message {
+  color: red;
+  font-weight: bold;
+}
+
+.filter-toggle {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.filter-toggle svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.filter-toggle.collapsed svg {
+  transform: rotate(180deg);
+}
+
+.filter-grid {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 1000px;
+  opacity: 1;
+  overflow: hidden;
+}
+
+
+.filter-grid.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.no-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 13px;
+  transition: opacity 0.3s ease-out;
+  background-color: rgba(255, 0, 0, 0.1);
+  /* vermelho transparente */
+  border: 1px solid red;
+  padding: 6px 0px;
+  /* para o texto não ficar colado na borda */
+  border-radius: 5px;
+  /* bordas arredondadas (opcional) */
+}
+
+.filtered-column {
+  border: 1px solid #930089;
+}
+
+.filtered-column-bg {
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+/* Estilo para os títulos das tabelas de informações - agora fixos */
+.info-title {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  font-weight: bold;
+  background-color: var(--bg-color);
+  padding: 8px 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Container para as tabelas de informações com rolagem */
+.info-table-container {
+  max-height: 300px;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+/* Styles for the info table */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.info-table th,
+.info-table td {
+  border: 1px solid var(--border-color);
+  padding: 6px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.info-table th {
+  background-color: var(--table-header-bg);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .info-table {
+    font-size: 11px;
+  }
+  
+  .info-table th,
+  .info-table td {
+    padding: 4px;
+  }
+  
+  .info-title {
+    font-size: 0.9rem;
+  }
+}
+
+#loaderContainer {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border-left-color: var(--primary-color);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.scroll-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.scroll-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  padding: 0;
+}
+
+.scroll-button:hover {
+  opacity: 1;
+}
+
+.table-container {
+  position: relative;
+  overflow-x: auto;
+  max-height: 600px;
+  margin-bottom: 15px;
+}
+
+#combinationsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#combinationsTable th,
+#combinationsTable td {
+  border: 1px solid var(--border-color);
+  padding: 6px;
+  text-align: left;
+}
+
+#combinationsTable th {
+  background-color: var(--table-header-bg);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  gap: 8px;
+}
+
+.pagination-container button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.pagination-container button:hover {
+  background-color: var(--hover-color);
+}
+
+.pagination-container span {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Botão de download XLSX com ícone */
+.download-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #1d9e4e;
+}
+
+.download-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Adicionar estas classes para os campos de busca e botões menores */
+.search-input {
+  font-size: 12px;
+  padding: 4px 6px;
+  height: 28px;
+  max-width: 200px;
+}
+
+.search-button {
+  font-size: 12px;
+  padding: 4px 10px;
+  height: 28px;
+  min-width: 100px;
+}
+
+/* Modificar o container dos botões de busca */
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.search-container input {
+  flex: 0 1 180px;
+}
+
+.search-container button {
+  flex: 0 0 auto;
+}
+
+/* Ajustar o tamanho do texto de erro */
+.search-container .error-message {
+  font-size: 11px;
+  margin-top: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+#combinationSize {
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 12px;
+  width: fit-content;
+  text-align: center;
+  margin: 10px auto;
+}
+
+/* Adicionar esta classe para o input de tamanho da combinação */
+.combination-size-input {
+  font-size: 12px;
+  padding: 4px 6px;
+  height: 28px;
+  width: 40px !important;
+  text-align: center;
+  margin-left: 5px;
+}
+
+/* Modificar a classe info-label para ser menor quando usada com o tamanho da combinação */
+.combination-size-label {
+  font-size: 13px;
+  white-space: nowrap;
+  
+}
+
+/* Ajustar o container do tamanho da combinação */
+.combination-size-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+/* Animação para a mensagem de erro */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  
+  90% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+
+.error-message-auto-hide {
+  animation: fadeOut 3s forwards;
+}
+
+@media (max-width: 480px) {
+  
+  .search-input,
+  .search-button {
+    font-size: 11px;
+    padding: 3px 6px;
+    height: 26px;
+  }
+  
+  .search-container {
+    gap: 4px;
+  }
+  
+  .combination-size-input {
+    font-size: 11px;
+    padding: 3px 5px;
+    height: 26px;
+    width: 45px !important;
+    
+  }
+  
+  .combination-size-label {
+    font-size: 12px;
+    
+  }
+}

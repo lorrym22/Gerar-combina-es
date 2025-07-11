@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gerador de Combinações personalizável para jogos, sorteios e estatísticas, com filtros e exportação de dados em Excel.">
+<meta name="keywords" content="gerador de combinações, loteria, estatísticas, combinações numéricas, filtros, sorteio, exportar excel, análise de números, jogos de azar, planilha de combinações">
+<meta name="author" content="Seu Nome ou Empresa">
+<meta name="robots" content="index, follow">
+<meta name="distribution" content="global">
+<meta name="googlebot" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Gerador de Combinações">
+<meta property="og:title" content="Gerador de Combinações Personalizado">
+<meta property="og:description" content="Crie combinações numéricas personalizadas com filtros inteligentes, visualize estatísticas e exporte os dados em Excel.">
+<meta property="og:url" content="https://seusite.com/gerador-combinacoes">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="315">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gerador de Combinações Personalizado">
+<meta name="twitter:description" content="Monte combinações com filtros inteligentes e exporte para Excel. Ideal para jogos, loterias e estatísticas.">
+<meta name="twitter:image" content="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png">
+
+<!-- Web App -->
+<meta name="application-name" content="Gerador de Combinações">
+<meta name="theme-color" content="#930089">
+    <title>Gerador de Combinações</title>
+    <link rel="shortcut icon" href="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <style>
+        .info-container {
+            width: fit-content;
+            /* ou defina uma largura específica */
+            margin: 0 auto;
+            /* centraliza horizontalmente */
+            text-align: center;
+            /* centraliza o conteúdo de texto */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+            <em></em>
+        </div>
+        
+        <h1>Combinações Lotofácil</h1>
+        
+        <div class="number-grid" id="numberGrid"></div>
+        <div class="info-item error-message" id="selectionError" style="display: none;">
+            Por favor, selecione pelo menos <span id="requiredNumbers"></span> números.
+        </div>
+        <div class="info-item" id="selectedNumbersContainer" style="display: none;">
+            <span class="info-label">Números selecionados:</span>
+            <span id="selectedCount" class="info-value">0</span>
+        </div>
+        
+        <div class="info-container">
+            <!-- Modificar o container do tamanho da combinação -->
+            <div class="info-item combination-size-container">
+                <span class="info-label combination-size-label">Tamanho da combinação:</span>
+                <input type="number" id="combinationSize" min="1" value="6" class="combination-size-input" style="color: var(--text-color);">
+            </div>
+            
+            <div class="info-item" id="totalCombinationsContainer" style="display: none;">
+                <span class="info-label">Total de combinações:</span>
+                <span id="combinationCount" class="info-value">0</span>
+            </div>
+        </div>
+        
+        <!-- Botões principais reorganizados -->
+        <div class="main-buttons">
+            <button onclick="generateCombinations()">Gerar Combinações</button>
+            <button onclick="clearAll()" class="clear-button">Limpar Tudo</button>
+            <button onclick="downloadXLSX()" class="download-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="18" height="18">
+                    <path fill="#4CAF50" d="M41,10H25v28h16c0.553,0,1-0.447,1-1V11C42,10.447,41.553,10,41,10z" />
+                    <path fill="#FFF" d="M32 15H39V18H32zM32 25H39V28H32zM32 30H39V33H32zM32 20H39V23H32zM25 15H30V18H25zM25 25H30V28H25zM25 30H30V33H25zM25 20H30V23H25z" />
+                    <path fill="#2E7D32" d="M27 42L6 38 6 10 27 6z" />
+                    <path fill="#FFF" d="M19.129,31l-2.411-4.561c-0.092-0.171-0.186-0.483-0.284-0.938h-0.037c-0.046,0.215-0.154,0.541-0.324,0.979L13.652,31H9.895l4.462-7.001L10.274,17h3.837l2.001,4.196c0.156,0.331,0.296,0.725,0.42,1.179h0.04c0.078-0.271,0.224-0.68,0.439-1.22L19.237,17h3.515l-4.199,6.939l4.316,7.059h-3.74V31z" />
+                </svg>
+                Baixar XLSX
+            </button>
+        </div>
+        
+        <div id="loaderContainer" style="display: none; margin-top: 20px;">
+            <div class="spinner"></div>
+            <div id="loaderText" style="margin-left: 10px;">Processando...</div>
+        </div>
+        
+        <div class="button-container search-container">
+            <input type="number" id="combinationPosition" min="1" placeholder="Posição" class="search-input">
+            <button onclick="getCombinationByPosition()" class="action-button search-button">Buscar</button>
+            <div id="positionError" class="error-message" style="display: none;"></div>
+        </div>
+        
+        <!-- Modificar a estrutura para manter o título fixo -->
+        <div id="selectedCombinationInfo" style="display: none; margin-top: 20px;">
+            <h3 class="info-title">Informações da Combinação Selecionada:</h3>
+            <div class="info-table-container">
+                <table class="info-table">
+                    <tr>
+                        <th>Combinação</th>
+                        <th>Posição</th>
+                        <th>Pares</th>
+                        <th>Ímpares</th>
+                        <th>Primos</th>
+                        <th>Fibonacci</th>
+                        <th>Sequenciais</th>
+                        <th>Múltiplos de 3</th>
+                        <th>Triangulares</th>
+                        <th>Moldura</th>
+                        <th>Centro</th>
+                        <th>Soma</th>
+                        <th>Números no X</th>
+                        <th>Números na Cruz</th>
+                        <th>Linhas</th>
+                        <th>Colunas</th>
+                        <th>Menores que 10</th>
+                        <th>Maiores que 10</th>
+                    </tr>
+                    <tr id="selectedCombinationDetails"></tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="button-container search-container">
+            <input type="text" id="specificCombination" placeholder="Ex: 01,02,03..." oninput="checkSpecificCombinationInput()" class="search-input">
+            <button onclick="getSpecificCombinationInfo()" class="action-button search-button">Buscar Info</button>
+            <div id="specificCombinationError" class="error-message" style="display: none;"></div>
+        </div>
+        
+        <!-- Modificar a estrutura para manter o título fixo -->
+        <div id="specificCombinationInfo" style="display: none; margin-top: 20px;">
+            <h3 class="info-title">Informações da Combinação Específica:</h3>
+            <div class="info-table-container">
+                <table class="info-table">
+                    <tr>
+                        <th>Combinação</th>
+                        <th>Posição</th>
+                        <th>Pares</th>
+                        <th>Ímpares</th>
+                        <th>Primos</th>
+                        <th>Fibonacci</th>
+                        <th>Sequenciais</th>
+                        <th>Múltiplos de 3</th>
+                        <th>Triangulares</th>
+                        <th>Moldura</th>
+                        <th>Centro</th>
+                        <th>Soma</th>
+                        <th>Números no X</th>
+                        <th>Números na Cruz</th>
+                        <th>Linhas</th>
+                        <th>Colunas</th>
+                        <th>Menores que 10</th>
+                        <th>Maiores que 10</th>
+                    </tr>
+                    <tr id="specificCombinationDetails"></tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="filter-container">
+            <div class="filter-toggle" onclick="toggleFilters()">
+                <h2>Filtros</h2>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </div>
+            <div class="filter-grid">
+                <div class="filter-item">
+                    <label for="paresInput">Pares:</label>
+                    <input type="number" id="paresInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="imparesInput">Ímpares:</label>
+                    <input type="number" id="imparesInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="primosInput">Primos:</label>
+                    <input type="number" id="primosInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="fibonacciInput">Fibonacci:</label>
+                    <input type="number" id="fibonacciInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="sequenciaisInput">Sequenciais:</label>
+                    <input type="number" id="sequenciaisInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="multiplos3Input">Múlt. 3:</label>
+                    <input type="number" id="multiplos3Input" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="triangularesInput">Triangulares:</label>
+                    <input type="number" id="triangularesInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="molduraInput">Moldura:</label>
+                    <input type="number" id="molduraInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="centroInput">Centro:</label>
+                    <input type="number" id="centroInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="somaInput">Soma:</label>
+                    <input type="number" id="somaInput" min="0" max="150" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="numerosXInput">N.X:</label>
+                    <input type="number" id="numerosXInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="numerosCruzInput">N.Cruz:</label>
+                    <input type="number" id="numerosCruzInput" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="linhasInput">Linhas:</label>
+                    <input type="text" id="linhasInput" pattern="^(\d,){4}\d$" placeholder="0,0,0,0,0">
+                </div>
+                <div class="filter-item">
+                    <label for="colunasInput">Colunas:</label>
+                    <input type="text" id="colunasInput" pattern="^(\d,){4}\d$" placeholder="0,0,0,0,0">
+                </div>
+                <div class="filter-item">
+                    <label for="menores10Input"> < 10:</label>
+                    <input type="number" id="menores10Input" min="0" max="6" value="" placeholder="0">
+                </div>
+                <div class="filter-item">
+                    <label for="maiores10Input"> >  9:</label>
+                    <input type="number" id="maiores10Input" min="0" max="6" value="" placeholder="0">
+                </div>
+            </div>
+        </div>
+        <div id="loaderContainer" style="display: none; margin-top: 20px;">
+            <div class="spinner"></div>
+            <div id="loaderText" style="margin-left: 10px;">Processando...</div>
+        </div>
+        <div id="filteredCombinationsCount" style="display: none;"></div>
+        <div class="table-container">
+            <table id="combinationsTable">
+                <thead>
+                    <tr>
+                        <th class="nowrap">#</th>
+                        <th class="nowrap no-wrap">Combinações Feitas</th>
+                        <th class="nowrap">Pares</th>
+                        <th class="nowrap">Ímpares</th>
+                        <th class="nowrap">Primos</th>
+                        <th class="nowrap">Fibonacci</th>
+                        <th class="nowrap">Sequenciais</th>
+                        <th class="nowrap">Múltiplos de 3</th>
+                        <th class="nowrap">Triangulares</th>
+                        <th class="nowrap">Moldura</th>
+                        <th class="nowrap">Centro</th>
+                        <th class="nowrap">Soma</th>
+                        <th class="nowrap">Números no X</th>
+                        <th class="nowrap">Números na Cruz</th>
+                        <th class="nowrap">Linhas</th>
+                        <th class="nowrap">Colunas</th>
+                        <th class="nowrap">Menores que 10</th>
+                        <th class="nowrap">Maiores que 9</th>
+                    </tr>
+                </thead>
+                <tbody id="combinationsBody">
+                </tbody>
+            </table>
+            <div class="scroll-buttons">
+                <button class="scroll-button" onclick="scrollToTop()" aria-label="Ir para o topo">↑</button>
+                <button class="scroll-button" onclick="scrollToBottom()" aria-label="Ir para o final">↓</button>
+            </div>
+        </div>
+        <div id="paginationContainer" class="pagination-container"></div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
