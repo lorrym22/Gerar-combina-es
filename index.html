@@ -29,10 +29,10 @@
     <meta name="twitter:title" content="Gerador de Combinações Personalizado">
     <meta name="twitter:description" content="Monte combinações com filtros inteligentes e exporte para Excel. Ideal para jogos, loterias e estatísticas.">
     <meta name="twitter:image" content="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png">
-  
+    
     <!-- Script do Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3980659823458851" crossorigin="anonymous"></script>
-
+    
     <!-- Web App -->
     <meta name="application-name" content="Gerador de Combinações">
     <meta name="theme-color" content="#930089">
@@ -49,7 +49,7 @@
             text-align: center;
             /* centraliza o conteúdo de texto */
         }
-
+        
         /* --- Início do Código do Pre-loader --- */
         #preloader {
             position: fixed;
@@ -58,28 +58,37 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            background-color: #fff; /* Cor de fundo do preloader */
+            background-color: #fff;
+            /* Cor de fundo do preloader */
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease-out; /* Efeito de fade-out */
+            transition: opacity 0.5s ease-out;
+            /* Efeito de fade-out */
         }
-
+        
         #preloader .spinner-preloader {
-            border: 12px solid #f3f3f3; /* Cinza claro */
-            border-top: 12px solid #930089; /* Cor do tema */
+            border: 12px solid #f3f3f3;
+            /* Cinza claro */
+            border-top: 12px solid #930089;
+            /* Cor do tema */
             border-radius: 50%;
             width: 80px;
             height: 80px;
             animation: spin 1.5s linear infinite;
         }
-
+        
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+            
+            100% {
+                transform: rotate(360deg);
+            }
         }
+        
         /* --- Fim do Código do Pre-loader --- */
-
     </style>
 </head>
 
@@ -88,7 +97,7 @@
     <div id="preloader">
         <div class="spinner-preloader"></div>
     </div>
-
+    
     <div class="container">
         <div class="theme-switch-wrapper">
             <label class="theme-switch" for="checkbox">
@@ -99,6 +108,13 @@
         </div>
         
         <h1>Combinações Lotofácil</h1>
+        <!-- =============================================================== -->
+        <!-- BLOCO DE ANÚNCIO #1 (TOPO)                                    -->
+        <!-- =============================================================== -->
+        <div class="ad-container">
+            <!-- IMPORTANTE: Substitua 'YYYYYYYYYY' pelo seu ID de Bloco de Anúncio -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3980659823458851" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        </div>
         
         <div class="number-grid" id="numberGrid"></div>
         <div class="info-item error-message" id="selectionError" style="display: none;">
@@ -141,6 +157,15 @@
             <div class="spinner"></div>
             <div id="loaderText" style="margin-left: 10px;">Processando...</div>
         </div>
+        
+        <!-- =============================================================== -->
+        <!-- BLOCO DE ANÚNCIO #2 (MEIO)                                    -->
+        <!-- =============================================================== -->
+        <div class="ad-container">
+            <!-- IMPORTANTE: Substitua 'ZZZZZZZZZZ' pelo seu ID de Bloco de Anúncio -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3980659823458851" data-ad-slot="ZZZZZZZZZZ" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        </div>
+        
         
         <div class="button-container search-container">
             <input type="number" id="combinationPosition" min="1" placeholder="Posição" class="search-input">
@@ -326,10 +351,18 @@
                 <button class="scroll-button" onclick="scrollToBottom()" aria-label="Ir para o final">↓</button>
             </div>
         </div>
+        <!-- =============================================================== -->
+        <!-- BLOCO DE ANÚNCIO #3 (RODAPÉ)                                  -->
+        <!-- =============================================================== -->
+        <div class="ad-container">
+            <!-- IMPORTANTE: Substitua 'WWWWWWWWWW' pelo seu ID de Bloco de Anúncio -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3980659823458851" data-ad-slot="WWWWWWWWWW" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        </div>
+        
         <div id="paginationContainer" class="pagination-container"></div>
     </div>
     <script src="js/main.js"></script>
-
+    
     <!-- Script para esconder o Pre-loader -->
     <script>
         window.addEventListener('load', function() {
