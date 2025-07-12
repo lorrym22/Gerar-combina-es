@@ -10,16 +10,9 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# Ambientes
-.env
-
-
-# Ignorar arquivos de configuração sensíveis
+# Ambientes e configurações sensíveis
 .env
 firebase-config.js
 
 # Ignorar arquivo de anúncio
 ads.txt
-
-# Ignorar dependências
-node_modules/
