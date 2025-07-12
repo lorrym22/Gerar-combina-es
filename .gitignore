@@ -12,3 +12,14 @@ Thumbs.db
 
 # Ambientes
 .env
+
+
+# Ignorar arquivos de configuração sensíveis
+.env
+firebase-config.js
+
+# Ignorar arquivo de anúncio
+ads.txt
+
+# Ignorar dependências
+node_modules/
