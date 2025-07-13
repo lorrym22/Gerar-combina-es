@@ -1,10 +1,85 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>Sobre</title>
+  
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1 {
+    color: #000000;
+    text-align: center;
+  }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+  }
+</style>
+
 </head>
 <body>
+  
+<!-- Elemento do Pre-loader -->
+<div id="preloader">
+    <div class="spinner-preloader"></div>
+</div>
+
+<style>
+    /* --- Início do Código do Pre-loader --- */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s ease-out;
+    }
+
+    #preloader .spinner-preloader {
+        border: 12px solid #f3f3f3;
+        border-top: 12px solid #930089;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        animation: spin 1.5s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    /* --- Fim do Código do Pre-loader --- */
+</style>
+
+<script>
+    // Script para esconder o Pre-loader
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }
+    });
+</script>
+
   <h1>Sobre</h1>
   <p>
     Este site foi criado com o objetivo de facilitar a geração de combinações numéricas para jogos como Lotofácil, Quina e Mega-Sena.
