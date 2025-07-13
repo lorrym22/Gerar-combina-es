@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Gerador de Combinações personalizável para jogos, sorteios e estatísticas, com filtros e exportação de dados em Excel.">
     <meta name="keywords" content="gerador de combinações, loteria, estatísticas, combinações numéricas, filtros, sorteio, exportar excel, análise de números, jogos de azar, planilha de combinações">
-    <meta name="author" content="Seu Nome ou Empresa">
+    <meta name="author" content="mais loterias">
     <meta name="robots" content="index, follow">
     <meta name="distribution" content="global">
     <meta name="googlebot" content="index, follow">
@@ -16,9 +15,9 @@
     <meta property="og:site_name" content="Gerador de Combinações">
     <meta property="og:title" content="Gerador de Combinações Personalizado">
     <meta property="og:description" content="Crie combinações numéricas personalizadas com filtros inteligentes, visualize estatísticas e exporte os dados em Excel.">
-    <meta property="og:url" content="https://seusite.com/gerador-combinacoes">
+    <meta property="og:url" content="https://gerar-combinacoes-pithivier-294f07.netlify.app/">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png">
+    <meta property="og:image" content="img/logo-lotofacil-em-png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="315">
@@ -28,7 +27,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Gerador de Combinações Personalizado">
     <meta name="twitter:description" content="Monte combinações com filtros inteligentes e exporte para Excel. Ideal para jogos, loterias e estatísticas.">
-    <meta name="twitter:image" content="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png">
+    <meta name="twitter:image" content="img/logo-lotofacil-em-png">
     
     <!-- Código do Google AdSense - INÍCIO -->
     <meta name="google-adsense-account" content="ca-pub-3980659823458851">
@@ -41,7 +40,7 @@
     <meta name="application-name" content="Gerador de Combinações">
     <meta name="theme-color" content="#930089">
     <title>Gerador de Combinações</title>
-    <link rel="shortcut icon" href="https://www.lotocerta.com.br/wp-content/uploads/2020/01/logo-lotofacil-em-png.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logo-lotofacil-em-png" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
     <style>
@@ -112,13 +111,7 @@
         </div>
         
         <h1>Combinações Lotofácil</h1>
-        <!-- =============================================================== -->
-        <!-- BLOCO DE ANÚNCIO #1 (TOPO)                                    -->
-        <!-- =============================================================== -->
-        <div class="ad-container">
-            <!-- IMPORTANTE: Substitua 'YYYYYYYYYY' pelo seu ID de Bloco de Anúncio -->
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3980659823458851" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        </div>
+        
         <amp-auto-ads type="adsense" data-ad-client="ca-pub-3980659823458851"> </amp-auto-ads>
         
         <div class="number-grid" id="numberGrid"></div>
@@ -161,14 +154,6 @@
         <div id="loaderContainer" style="display: none; margin-top: 20px;">
             <div class="spinner"></div>
             <div id="loaderText" style="margin-left: 10px;">Processando...</div>
-        </div>
-        
-        <!-- =============================================================== -->
-        <!-- BLOCO DE ANÚNCIO #2 (MEIO)                                    -->
-        <!-- =============================================================== -->
-        <div class="ad-container">
-            <!-- IMPORTANTE: Substitua 'ZZZZZZZZZZ' pelo seu ID de Bloco de Anúncio -->
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3980659823458851" data-ad-slot="ZZZZZZZZZZ" data-ad-format="auto" data-full-width-responsive="true"></ins>
         </div>
         
         
@@ -356,22 +341,15 @@
                 <button class="scroll-button" onclick="scrollToBottom()" aria-label="Ir para o final">↓</button>
             </div>
         </div>
-        <!-- =============================================================== -->
-        <!-- BLOCO DE ANÚNCIO #3 (RODAPÉ)                                  -->
-        <!-- =============================================================== -->
-        <div class="ad-container">
-            <!-- IMPORTANTE: Substitua 'WWWWWWWWWW' pelo seu ID de Bloco de Anúncio -->
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3980659823458851" data-ad-slot="WWWWWWWWWW" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        </div>
         
         <div id="paginationContainer" class="pagination-container"></div>
     </div>
     <footer style="text-align: center; padding: 20px; font-size: 14px;">
-    <a href="/sobre.html">Sobre</a> |
-    <a href="/contato.html">Contato</a> |
-    <a href="/privacidade.html">Política de Privacidade</a> |
-    <a href="/termos.html">Termos de Uso</a>
-</footer>
+        <a href="/sobre.html">Sobre</a> |
+   <!--     <a href="/contato.html">Contato</a> |-->
+        <a href="/privacidade.html">Política de Privacidade</a> |
+        <a href="/termos.html">Termos de Uso</a>
+    </footer>
     <script src="js/main.js"></script>
     
     <!-- Script para esconder o Pre-loader -->
