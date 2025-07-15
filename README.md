@@ -15,5 +15,6 @@ Este projeto gera combinações de números, útil para simulações de loteria 
    ```
 
 ## Autor
-
-Seu Nome — [@seuusuario](https://github.com/seuusuario)
+**Aldo** — [@aldodev](https://github.com/aldodev)  
+🌐 [www.aldodev.com](https://www.aldodev.com)  
+📧 aldo@email.com
